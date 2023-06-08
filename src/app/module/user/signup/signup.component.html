@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <form #studentForm="ngForm" (ngSubmit)="signup(studentForm.value)">
+      <div class="form-group">
+        <label for="name">Name : </label>
+        <input type="text" pattern="[A-Za-z]{1,32}" #fname="ngModel" required ngModel class="form-control" id="name"
+          name="name" placeholder="Enter your name">
+        <div *ngIf="fname.touched ">
+          <span *ngIf="fname.errors?.['required']">Please enter name</span>
+          <span *ngIf="fname.errors?.['pattern']">invalid</span>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address : </label>
+        <input type="email" asyncEmailValidator name="email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+          #femail="ngModel" required ngModel class="form-control" id="email" aria-describedby="emailHelp"
+          placeholder="Enter your email">
+        <!-- <span *ngIf="femail.errors?.['required']">Please enter email</span> -->
+      </div>
+
+      <div *ngIf="femail.errors?.['asyncError'] ">
+        email already exists
+      </div>
+      <div *ngIf="femail.touched ">
+        <span *ngIf="femail.errors?.['required']">Please enter email</span>
+        <span *ngIf="femail.errors?.['pattern']">invalid</span>
+      </div>
+
+
+      <div class="form-group">
+        <label for="number">Phone number : </label>
+        <input type="tel" pattern="[789][0-9]{9}" #fphone="ngModel" required ngModel class="form-control" id="number"
+          name="mobile" placeholder="Enter your phone number">
+        <!-- <span *ngIf="fphone.errors?.['required']">Please enter number</span> -->
+      </div>
+
+      <div *ngIf="fphone.touched ">
+        <span *ngIf="fphone.errors?.['required']">Please enter phone</span>
+        <span *ngIf="fphone.errors?.['pattern']">invalid</span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password : </label>
+        <input type="password" #fpassword="ngModel" required ngModel class="form-control" id="password" name="password"
+          placeholder="Enter your password">
+        <!-- <span *ngIf="fpassword.errors?.['required']">Please enter password</span> -->
+      </div>
+
+      <div *ngIf="fpassword.touched ">
+        <span *ngIf="fpassword.errors?.['required']">Please enter password</span>
+        <span *ngIf="fpassword.errors?.['pattern']">invalid</span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password : </label>
+        <input type="file" #fpassword="ngModel" required ngModel class="form-control" id="file" name="image"
+          placeholder="Enter your password" (change)="onImageChanged($event)">
+        <!-- <span *ngIf="fpassword.errors?.['required']">Please enter password</span> -->
+      </div>
+
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+  </div>
+</div>

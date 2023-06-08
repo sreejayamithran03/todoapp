@@ -1,0 +1,32 @@
+<div class="main">
+  <div class="d-flex justify-content-center align-items-center">
+    <h4>Add Task</h4>
+  </div>
+
+  <div class="signup-form">
+
+    <form #form="ngForm" (ngSubmit)="taskSubmit(form.value)">
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Task</label>
+        <input type="text" ngModel #task="ngModel" name="task" id="name" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Description</label>
+        <textarea name="description" ngModel #description="ngModel" id="" cols="30" class="form-control"
+          rows="5"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Priority</label>
+        <select name="priority" ngModel #priority="ngModel" class="form-control" id="">
+          <option value="high">high</option>
+          <option value="low">low</option>
+        </select>
+      </div>
+       <button type="submit" class="btn btn-primary">Add Task</button>
+
+    </form>
+
+  </div>
+
+</div>

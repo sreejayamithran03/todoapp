@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.snackBarSuccess{
+    margin: 0 !important;
+  position: absolute;
+  right: 25px;
+  background-color: blueviolet;
+  top: 20px;
+  font-weight: bold;
+  
+}
+.mat-simple-snackbar-action {
+    color: white !important;
+}
+
+.snackBarDanger{
+    margin: 0 !important;
+  position: absolute;
+  right: 25px;
+  background-color: red;
+  top: 20px;
+  font-weight: bold;
+  
+}

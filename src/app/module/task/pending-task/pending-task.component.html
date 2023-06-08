@@ -1,0 +1,81 @@
+<div class="main">
+  <div class="mb-3">
+    <label for="priority">Filter:</label>
+    <select [(ngModel)]='taskPriority' (change)="filterTask()" name="priority" id="priority">
+      <option value="high">High</option>
+      <option value="low">Low</option>
+      <option value="all">All</option>
+    </select>
+  </div>
+  <div class="col-md-12">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Sl No</th>
+          <th scope="col">Date</th>
+          <th scope="col">Task</th>
+          <th scope="col">Description</th>
+          <th scope="col">Priority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filteredList; let i = index">
+          <th scope="row">{{i+1}}</th>
+          <td>{{ item.date }}</td>
+          <td>{{ item.task }}</td>
+          <td>{{ item.description }}</td>
+          <td>{{ item.priority }}</td>
+          <td><i class="bi bi-pencil text-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong"
+              (click)="editTask(item,i,item.id)"></i>
+            <i class="bi bi-trash3 text-danger" (click)="deleteTask(item.id,i)"></i>
+            <i class="bi bi-check2 text-success" (click)="updateRow(item,i)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Button trigger modal -->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLong">
+  Launch demo modal
+</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">change task</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+
+          <form #form="ngForm" (ngSubmit)="modalchanges(form.value)">
+            <div class="mb-3">
+              <label for="task" class="form-label">Task</label>
+              <input type="text" ngModel name="task" id="taskname" class="form-control" [(ngModel)]="mtask">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea name="description" ngModel id="descriptionname" cols="30" class="form-control" rows="5"
+                [(ngModel)]="mdes"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="priority" class="form-label">Priority</label>
+              <select name="priority" ngModel class="form-control" id="priorityname" [(ngModel)]="mselect">
+                <option value="high">high</option>
+                <option value="low">low</option>
+              </select>
+            </div>
+            <!-- <button type="button" class="btn btn-secondary" >Close</button> -->
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>

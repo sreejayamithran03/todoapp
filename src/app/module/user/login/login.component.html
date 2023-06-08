@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="login-container">
+    <h2 class="text-center mb-4">Login</h2>
+    <form #login="ngForm" (ngSubmit)="submit(login.value)">
+
+      <div class="form-group">
+        <label for="email">login</label>
+        <input type="text" #email="ngModel" required ngModel name="email" class="form-control" id="email"
+          placeholder="Enter your email">
+      </div>
+      <div *ngIf="email.touched">
+        <span *ngIf="email.errors?.['required']">email is required</span>
+        <!-- <span *ngIf="password.errors?.['pattern']">invalid name format</span> -->
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" #password="ngModel" required ngModel name="password" class="form-control" id="password"
+          placeholder="Enter your password">
+      </div>
+      <div *ngIf="password.touched">
+        <span *ngIf="password.errors?.['required']">password is required</span>
+        <!-- <span *ngIf="password.errors?.['pattern']">invalid name format</span> -->
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+
+    </form>
+
+  </div>
+</div>

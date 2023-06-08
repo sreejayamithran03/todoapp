@@ -1,0 +1,30 @@
+<!-- <app-task></app-task> -->
+<div class="row">
+
+    <label for="searchbox">Search</label>
+    <input type="search" class="form-control" [(ngModel)]="searchText" placeholder="search task" (keyup)="searchItems()"
+        name="searchText" id="">
+
+</div>
+
+<table class="table table-striped">
+    <tr>
+        <th>SL NO</th>
+        <th>ADD DATE</th>
+        <th>TASK</th>
+        <th>DESCRIPTION</th>
+        <th>PRIORITY</th>
+        <!-- <th>COMPELTE DATE</th> -->
+    </tr>
+    <!-- !only check  -->
+    <tbody *ngIf="!showSpinner">
+        <tr *ngFor="let item of taskList; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{ item.date }}</td>
+            <td>{{ item.task }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.priority }}</td>
+        </tr>
+    </tbody>
+    <ng-container *ngIf="showSpinner"></ng-container>
+</table>
